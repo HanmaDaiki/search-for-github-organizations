@@ -61,6 +61,15 @@ export const TableLayout = () => {
         </tbody>
       </table>
       <PaginationTable />
+      <button
+        className='absolute top-0 left-0 border p-1 m-1 text-sm rounded border-gray-300'
+        onClick={() => {
+          navigate('/');
+          dispatch(setOrg({ name: '', repos: [], error: false, page: 1 }));
+        }}
+      >
+        Назад
+      </button>
     </>
   );
 };
