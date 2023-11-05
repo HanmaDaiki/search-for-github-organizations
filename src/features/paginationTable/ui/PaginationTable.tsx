@@ -1,6 +1,8 @@
-import { paginateOrg } from '@/entities/organiztion/model/orgReducer';
-import { IOrganization } from '@/entities/organiztion/types';
 import { useDispatch, useSelector } from 'react-redux';
+import { paginateOrg } from '@entities/organiztion/model/orgReducer';
+import { IOrganization } from '@entities/organiztion/types';
+import ArrowLeft from '@assets/left-arrow.svg?react';
+import ArrowRight from '@assets/right-arrow.svg?react';
 
 export const PaginationTable = () => {
   const { page, name } = useSelector((state: { org: IOrganization }) => state.org);
@@ -16,25 +18,19 @@ export const PaginationTable = () => {
   };
 
   return (
-    <nav className='mt-5'>
-      <ul className='inline-flex justify-between text-sm'>
-        <li>
-          <button
-            onClick={previousHandler}
-            className='flex items-center justify-center px-3 h-8 ml-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-l-lg hover:bg-gray-100 hover:text-gray-700'
-          >
-            Предыдущий
-          </button>
-        </li>
-        <li>
-          <button
-            onClick={nextHandler}
-            className='flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700'
-          >
-            Следующий
-          </button>
-        </li>
-      </ul>
+    <nav className='flex mt-5'>
+      <button
+        onClick={previousHandler}
+        className='flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-l-lg hover:bg-gray-100 hover:text-gray-700'
+      >
+        <ArrowLeft width={20} />
+      </button>
+      <button
+        onClick={nextHandler}
+        className='flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700'
+      >
+        <ArrowRight width={20} />
+      </button>
     </nav>
   );
 };
