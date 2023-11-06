@@ -1,4 +1,4 @@
-import { IOrganization, TActions } from '../types';
+import { IOrganization, PayloadSetOrg, TActions } from '../types';
 
 const initialState: IOrganization = {
   name: '',
@@ -21,10 +21,11 @@ export default function orgReducer(state = initialState, actions: TActions) {
   }
 }
 
-export const setOrg = (payload: IOrganization) => ({
+export const setOrg = (payload: PayloadSetOrg) => ({
   type: SET_ORG,
   payload,
 });
+
 export const fetchOrg = (name: string) => ({
   type: FETCH_ORG_REPOS_BY_NAME,
   payload: {

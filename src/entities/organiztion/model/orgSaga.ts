@@ -15,7 +15,11 @@ function* fetchOrgWorker({ payload }: ReturnType<typeof setOrg>): GeneratorFetch
 function* paginateTableWorker({ payload }: ReturnType<typeof setOrg>): GeneratorFetchOrg {
   try {
     const repos = yield call(paginateTable, payload.name, payload.page);
-    yield put(setOrg({ name: payload.name, repos, error: false, page: payload.page }));
+    if (repos.length === 0) {
+      yield put(setOrg({ name: payload.name, error: false, page: payload.page }));
+    } else {
+      yield put(setOrg({ name: payload.name, repos, error: false, page: payload.page }));
+    }
   } catch (e) {
     yield put(setOrg({ name: payload.name, repos: [], error: true, page: payload.page }));
   }

@@ -23,11 +23,18 @@ export interface IActionSetOrg {
 
 export type TActions = IActionSetOrg;
 
+export type PayloadSetOrg = {
+  name: string;
+  error: boolean;
+  page: number;
+  repos?: IOrganizationRepo[];
+};
+
 export type GeneratorFetchOrg = Generator<
   | CallEffect<IOrganizationRepo[]>
   | PutEffect<{
       type: string;
-      payload: IOrganization;
+      payload: PayloadSetOrg;
     }>,
   void,
   IOrganizationRepo[]
